@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Box, Typography, Grid, List, TableHead, TableContainer, TableCell, TableBody, TableRow, Link } from '@material-ui/core';
+import { Box, Typography, Grid, TableHead, TableContainer, TableCell, TableBody, TableRow, Link } from '@material-ui/core';
 
 
 export const Course = () => {

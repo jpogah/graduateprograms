@@ -37,7 +37,7 @@ export const CourseList = ({ data }) => {
           <ListItemText
             primary={course.programName}
             secondary={
-              <React.Fragment>
+              <React.Fragment key={course._links.self.href}>
                 <Typography
                   component="span"
                   variant="body2"
@@ -48,7 +48,7 @@ export const CourseList = ({ data }) => {
                 </Typography>
                 {course.city + ', ' + course.state}
                { !course.greRequired && (<Alert variant="outlined" severity="info">
-                   <AlertTitle><Typography>GRE is not Required</Typography></AlertTitle>
+                   <AlertTitle>GRE is not Required</AlertTitle>
               </Alert>) }
               </React.Fragment>
             }

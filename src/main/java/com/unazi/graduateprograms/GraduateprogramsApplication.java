@@ -24,5 +24,10 @@ public class GraduateprogramsApplication {
         };
     }
 
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
+
 
 }

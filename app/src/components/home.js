@@ -12,7 +12,7 @@ export const Home = ({state, courses, handleChange, handleSearch, setState, link
     return (
         <>
          <Search state={state} onSearchChange={handleChange} onSearch={handleSearch} />
-         {courses && courses.length > 0 && (<div><CourseList data={courses} /></div>)}
+         {courses && courses.length > 0 && (<><CourseList data={courses} /></>)}
          <Grid container>
              <Grid item xs={4}/>
              <Grid item>

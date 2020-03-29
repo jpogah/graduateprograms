@@ -1,14 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Routes } from './components/routes';
-import { CookiesProvider, useCookies } from 'react-cookie';
-import { withCookies} from 'react-cookie';
+import { postData } from './http';
+import history from './components/history';
+import Api from './Api';
+import { withAuth } from '@okta/okta-react';
+import { Security, SecureRoute, ImplicitCallback } from '@okta/okta-react';
 import { MenuAppBar } from './components/menu-app-bar';
-
 const API_URL = '/api/degreePrograms';
-function App() {
-    const [query, setQuery] = React.useState('');
-     const [cookies, setCookie] = useCookies('XSRF-TOKEN');
+const USER_API_URL = '/api/users';
+
+
+
+const App = ({ auth }) => {
      const [links , setLinks]  = React.useState({});
     const [state, setState] = React.useState({
         searchTerm: null,
@@ -18,9 +21,38 @@ function App() {
         isAuthenticated: false,
         user: null,
         url: API_URL,
+        name:'',
+        email: '',
+        password: '',
+        confirmation:'',
+        authenticated:null,
+        user: null,
+        api: new Api()
+        
     });
 
     const [courses, setCourses] = React.useState([]);
+
+    const checkAuthentication = async() => {
+       const authenticated = await auth.isAuthenticated();
+       if ( authenticated !== state.authenticated){
+           if (authenticated) {
+               const user = await auth.getUser();
+               console.log("User is: " , user);
+               let accessToken = await auth.getAccessToken();
+               setState({authenticated, user, api: new Api(accessToken)});
+           }
+
+       } else{
+           setState({authenticated, user: null, api:new Api()});
+       }
+    }
+
+    React.useEffect(() => {
+        checkAuthentication();
+    });
+
+
     const handleChange = (event) => {
         const value = event.target.value;
         setState({
@@ -39,59 +71,43 @@ function App() {
         console.log('after url', state.url);
     }
 
-    const handlePagination = (event) => {
 
-        console.log(this.reply_click(event.target.name));
-
-    }
-
-    // React.useEffect(()=>{
-    //     const getAsynUser = async () =>{
-    //         const response = await fetch('/api/user', {credentials: 'include'});
-    //         const body = await response.text();
-    //         setCookie('XSRF-TOKEN');
-    //         if (body === ''){
-    //             setState(({isAuthenticated: false}));
-    //         } else {
-    //             setState({isAuthenticated: true, user: JSON.parse(body)});
-    //         }
-    //     };
-    //     getAsynUser();
-    // }, [])
-
-    const onLogin= () => {
-        // let port = (window.location.port ? ':' + window.location.port : '');
-        // if (port === ':3000') {
-        //   port = ':8080';
-        // }
-        // window.location.href = '//' + window.location.hostname + port + '/private';
+    const login= () => {
+        if (state.authenticated == null ) return;
+        auth.login('/')
       }
     
-     const  onLogout = () => {
-        // fetch('/api/logout', {method: 'POST', credentials: 'include',
-        //   headers: {'X-XSRF-TOKEN': state.searchTermcsrfToken}}).then(res => res.json())
-        //   .then(response => {
-        //     window.location.href = response.logoutUrl + "?id_token_hint=" +
-        //       response.idToken + "&post_logout_redirect_uri=" + window.location.origin;
-        //   });
+     const  logout = () => {
+        auth.logout('/') ;
       }
 
-    React.useEffect(() => {
-        fetch(state.url, {headers :{authorization: 'Basic ' + window.btoa('admin' + ":" + 'password') }}).then(
-            response => response.json()).then(result => {
-                setCourses(result._embedded.degreePrograms);
-                setLinks(result._links);
-                console.log('courses', result);
-            })
-    }, [state.url])
-    return (
-        <>
-        <CookiesProvider>
-            <MenuAppBar state={state} onLogin={onLogin}  onLogout={onLogout}/>
-            <Routes state={state} courses={courses} handleChange={handleChange} handleSearch={handleSearch} links={links} setState={setState}/>
-        </CookiesProvider>
+    // React.useEffect(() => {
+    //     fetch(state.url, {headers :{authorization: `Basic ${window.btoa(`admin:password`) }`}}).then(
+    //         response => response.json()).then(result => {
+    //             setCourses(result._embedded.degreePrograms);
+    //             setLinks(result._links);
+    //             console.log('courses', result);
+    //         })
+    // }, [state.url])
 
+    let {authenticated, user, api} = state;
+
+    React.useEffect(() =>{
+        const result = api.getAll(state.url);
+        console.log('result', result);
+        setCourses(result._embedded.degreePrograms);
+        setLinks(result._links);
+    }, [api, state.url])
+
+    if (authenticated == null) return null;
+    return (
+
+        
+        <> 
+            <MenuAppBar isAuthenticated={authenticated} state={state} login={login}  logout={logout}/>
+            <Routes authenticated={authenticated} user={user} state={state} courses={courses} handleChange={handleChange} 
+            handleSearch={handleSearch} links={links} setState={setState}/>
         </>)
 }
 
-export default withCookies(App);
+export default withAuth(App);
