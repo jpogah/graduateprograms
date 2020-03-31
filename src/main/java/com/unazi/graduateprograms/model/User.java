@@ -13,7 +13,7 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     @Column(nullable = false, updatable = false)
     private Long id;
 
@@ -24,7 +24,6 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Review> reviews;
 
-    @Column(unique = true)
     private  String userName;
 
     public User(String name, String email, String password, String userName) {

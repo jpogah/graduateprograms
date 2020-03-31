@@ -11,7 +11,6 @@ public class Review {
 
     @Id
     @GeneratedValue
-    @Column(nullable = false, updatable = false)
     private Long id;
 
     @ManyToOne
