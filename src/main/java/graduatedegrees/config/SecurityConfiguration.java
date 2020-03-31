@@ -1,11 +1,10 @@
-package com.unazi.graduateprograms.config;
+package graduatedegrees.config;
 
-import com.unazi.graduateprograms.services.AuthenticationFilter;
-import com.unazi.graduateprograms.services.LoginFilter;
-import com.unazi.graduateprograms.services.UserDetailsServiceImpl;
+import graduatedegrees.services.AuthenticationFilter;
+import graduatedegrees.services.LoginFilter;
+import graduatedegrees.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -23,7 +22,6 @@ import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
-@ComponentScan(basePackageClasses = UserDetailsServiceImpl.class)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
