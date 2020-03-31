@@ -2,7 +2,6 @@ package com.unazi.graduateprograms.model;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.jsoup.Jsoup;
@@ -10,23 +9,23 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class GeorgiaTechStrategy implements DegreeProgramStrategy {
+public class GeorgiaTechStrategy implements CourseStrategy {
 
     private String schoolWebsite;
     private String programWebsite;
-    private List<DegreeProgram> degreePrograms;
+    private List<Course> degreePrograms;
 
 
     public GeorgiaTechStrategy(String schoolWebsite, String programsWebsite) {
         this.programWebsite = programsWebsite;
         this.schoolWebsite = schoolWebsite;
-        this.degreePrograms = new ArrayList<DegreeProgram>();
+        this.degreePrograms = new ArrayList<Course>();
 
     }
 
 
     @Override
-    public List<DegreeProgram> degreeProgram() {
+    public List<Course> degreeProgram() {
 
         String img = null;
         String tuition = null;
@@ -87,7 +86,7 @@ public class GeorgiaTechStrategy implements DegreeProgramStrategy {
                             Document programPage = Jsoup.connect("http://gradadmiss.gatech.edu/" + link1.attr("href")).get();
                             //	 System.out.println(programPage);
                             Elements pageLinks = programPage.select("a[href]");
-                            DegreeProgram temp = new DegreeProgram();
+                            Course temp = new Course();
                             temp.setImg(img);
                             temp.setTuitionCost(tuition);
 

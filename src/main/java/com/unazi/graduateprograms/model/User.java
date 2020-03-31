@@ -4,6 +4,8 @@ import lombok.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
+import java.nio.MappedByteBuffer;
+import java.util.List;
 
 @Setter
 @Getter
@@ -18,6 +20,11 @@ public class User {
     private  String name;
     private  String email;
     private  String password;
+
+    @OneToMany(mappedBy = "user")
+    private List<Review> reviews;
+
+    @Column(unique = true)
     private  String userName;
 
     public User(String name, String email, String password, String userName) {

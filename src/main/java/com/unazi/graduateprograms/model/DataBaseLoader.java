@@ -9,14 +9,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataBaseLoader implements CommandLineRunner {
 
-    private final DegreeProgramRepository degreeProgramRepository;
+    private final CourseRepository courseRepository;
     private final UserRepository userRepository;
+    private final ReviewRepository reviewRepository;
 
     @Autowired
-    public DataBaseLoader(DegreeProgramRepository degreeProgramRepository, UserRepository userRepository) {
+    public DataBaseLoader(CourseRepository courseRepository, UserRepository userRepository, ReviewRepository reviewRepository) {
 
-        this.degreeProgramRepository = degreeProgramRepository;
+        this.courseRepository = courseRepository;
         this.userRepository = userRepository;
+        this.reviewRepository = reviewRepository;
     }
 
     @Override
@@ -27,8 +29,10 @@ public class DataBaseLoader implements CommandLineRunner {
 
         GeorgiaTechStrategy st = new GeorgiaTechStrategy("https://www.gatech.edu/","http://www.gradadmiss.gatech.edu/programs-a-z");
         WebScraper ws = new WebScraper();
-        List<DegreeProgram> degrees = ws.getDegreePrograms(st);
-        this.degreeProgramRepository.saveAll(degrees);
+       reviewRepository.save(new Review(3l , "I really enjoyed the program it was great"));
+        reviewRepository.save(new Review(2l , "Not my kind of program"));
+        List<Course> degrees = ws.getDegreePrograms(st);
+        this.courseRepository.saveAll(degrees);
 
 
     }
