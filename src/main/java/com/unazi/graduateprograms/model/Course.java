@@ -32,8 +32,11 @@ public class Course {
     private String state;
     private String zip;
     private String schoolName;
+    private Long rating;
+    private Long totalReviews;
 
     @OneToMany(mappedBy = "course")
     private List<Review> reviews;
+
 
 }

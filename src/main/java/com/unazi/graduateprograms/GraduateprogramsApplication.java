@@ -9,7 +9,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "com.unazi.graduateprograms")
-@ComponentScan(basePackages = "com.unazi.graduateprograms.services")
 public class GraduateprogramsApplication {
 
 

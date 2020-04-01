@@ -29,10 +29,10 @@ public class DataBaseLoader implements CommandLineRunner {
 
         GeorgiaTechStrategy st = new GeorgiaTechStrategy("https://www.gatech.edu/","http://www.gradadmiss.gatech.edu/programs-a-z");
         WebScraper ws = new WebScraper();
-       reviewRepository.save(new Review(3l , "I really enjoyed the program it was great"));
-        reviewRepository.save(new Review(2l , "Not my kind of program"));
-        List<Course> degrees = ws.getDegreePrograms(st);
+         List<Course> degrees = ws.getDegreePrograms(st);
         this.courseRepository.saveAll(degrees);
+        reviewRepository.save(new Review(3l , "I really enjoyed the program it was great", "admin"));
+        reviewRepository.save(new Review(2l , "Not my kind of program", "admin"));
 
 
     }

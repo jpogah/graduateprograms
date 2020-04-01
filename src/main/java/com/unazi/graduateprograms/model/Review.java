@@ -16,6 +16,7 @@ public class Review {
     @ManyToOne
     @JoinColumn(name="user_id")
     private  User user;
+    private String username;
 
     @ManyToOne
     @JoinColumn(name="course_id")
@@ -26,9 +27,10 @@ public class Review {
 
     public Review(){}
 
-    public Review(Long rating, String reviewText) {
+    public Review(Long rating, String reviewText, String username) {
         this.rating = rating;
         this.reviewText = reviewText;
+        this.username = username;
     }
 
     @PrePersist
