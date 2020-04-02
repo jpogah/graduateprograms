@@ -9,21 +9,24 @@ import java.util.List;
 
 @Setter
 @Getter
+@Data
 @Entity
+@Table(name="users")
 public class User {
-
     @Id
     @GeneratedValue
     @Column(nullable = false, updatable = false)
     private Long id;
 
     private  String name;
+    @Column(unique = true)
     private  String email;
     private  String password;
 
     @OneToMany(mappedBy = "user")
     private List<Review> reviews;
 
+    @Column(unique = true)
     private  String userName;
 
     public User(String name, String email, String password, String userName) {

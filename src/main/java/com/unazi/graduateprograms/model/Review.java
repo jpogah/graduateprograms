@@ -7,10 +7,12 @@ import java.util.Date;
 
 @Data
 @Entity
+@Table(name = "review")
 public class Review {
 
     @Id
     @GeneratedValue
+    @Column(updatable = false, insertable = false)
     private Long id;
 
     @ManyToOne

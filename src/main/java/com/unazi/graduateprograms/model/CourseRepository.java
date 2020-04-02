@@ -20,4 +20,8 @@ public interface CourseRepository extends PagingAndSortingRepository<Course, Lon
     @RestResource(path = "searchBy", rel = "searchBy")
     public Page<List<Course>> searchBy(@Param("searchTerm") String searchTerm, @Param("location") String location, Pageable p );
 
+
+    @Query("Select c from Course c where c.programName= :programName and c.schoolName= :schoolName")
+    public Course findByProgramNameandAndSchoolName(@Param("programName") String programName, @Param("schoolName") String schoolName);
+
 }

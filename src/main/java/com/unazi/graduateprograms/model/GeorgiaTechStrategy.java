@@ -117,7 +117,10 @@ public class GeorgiaTechStrategy implements CourseStrategy {
                             temp.setZip("30332");
                             temp.setSchoolName("Georgia Institute Of Technology");
 
-                            temp.setProgramDetails(programPage.select("div.field-item").first().text());
+                            List<String> programDetails = new ArrayList();
+                            programDetails.add(programPage.select("div.field-item").first().text());
+
+                            temp.setProgramDetails(programDetails.toArray(new String[programDetails.size()]));
                             this.degreePrograms.add(temp);
 
                         }

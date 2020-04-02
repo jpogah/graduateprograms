@@ -10,18 +10,22 @@ import java.util.List;
 @Data
 @RequiredArgsConstructor
 @Entity
+@Table(name="course" , uniqueConstraints={
+        @UniqueConstraint(columnNames = {"programName", "schoolName"})
+})
 public class Course {
 
 
     private @Id
     @GeneratedValue
+            @Column(updatable = false, insertable = false)
     Long id;
 
 
     private String programName;
 
     @Column(length = 100000)
-    private String programDetails;
+    private String[] programDetails;
     private String website;
     private String email;
     private String tuitionCost;
@@ -34,6 +38,8 @@ public class Course {
     private String schoolName;
     private Long rating;
     private Long totalReviews;
+    private String programContact;
+    private String applyLink;
 
     @OneToMany(mappedBy = "course")
     private List<Review> reviews;
