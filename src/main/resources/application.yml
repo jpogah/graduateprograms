@@ -1,0 +1,9 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create #use update in production, do not want to create the database afresh each time the program run
+
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/graduateprogramsdb"
+    username: graduateprograms
+    password: okibe1234

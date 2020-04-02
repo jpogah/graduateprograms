@@ -28,6 +28,8 @@ public class Course {
     private String[] programDetails;
     private String website;
     private String email;
+
+    @Column(length = 100000)
     private String tuitionCost;
     private String img;
     private String greRequired;

@@ -3,6 +3,7 @@ package com.unazi.graduateprograms.model;
 import java.util.List;
 
 import com.unazi.graduateprograms.services.CourseService;
+import com.unazi.graduateprograms.top100universities.strategy.MitStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -32,9 +33,12 @@ public class DataBaseLoader implements CommandLineRunner {
         userRepository.save(new User("admin", "admin@mail.com", "password","admin"));
 
         GeorgiaTechStrategy st = new GeorgiaTechStrategy("https://www.gatech.edu/","http://www.gradadmiss.gatech.edu/programs-a-z");
+        MitStrategy mit = new MitStrategy();
         WebScraper ws = new WebScraper();
          List<Course> degrees = ws.getDegreePrograms(st);
         this.courseService.saveCourse(degrees);
+        List<Course> mitCourses = ws.getDegreePrograms(mit);
+        this.courseService.saveCourse(mitCourses);
         reviewRepository.save(new Review(3l , "I really enjoyed the program it was great", "admin"));
         reviewRepository.save(new Review(2l , "Not my kind of program", "admin"));
 
