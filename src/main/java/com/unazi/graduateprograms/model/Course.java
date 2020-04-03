@@ -30,7 +30,7 @@ public class Course {
     private String email;
 
     @Column(length = 100000)
-    private String tuitionCost;
+    private String[] tuitionCost;
     private String img;
     private String greRequired;
     private String toeflRequired;

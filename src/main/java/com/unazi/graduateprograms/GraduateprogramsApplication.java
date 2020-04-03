@@ -20,7 +20,7 @@ import java.util.List;
 public class GraduateprogramsApplication {
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args)  {
 
         SpringApplication.run(GraduateprogramsApplication.class, args);
 
@@ -35,11 +35,6 @@ public class GraduateprogramsApplication {
             }
         };
     }
-
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
 
 
 }

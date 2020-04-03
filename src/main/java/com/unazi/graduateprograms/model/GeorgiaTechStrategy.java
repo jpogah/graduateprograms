@@ -88,7 +88,9 @@ public class GeorgiaTechStrategy implements CourseStrategy {
                             Elements pageLinks = programPage.select("a[href]");
                             Course temp = new Course();
                             temp.setImg(img);
-                            temp.setTuitionCost(tuition);
+                            List<String> list = new ArrayList<>();
+                            list.add(tuition);
+                            temp.setTuitionCost(list.toArray(new String[list.size()]));
 
                             for (Element p : pageLinks) {
                                 if (p.attr("href").startsWith("mailto")){

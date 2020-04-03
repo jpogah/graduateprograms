@@ -15,7 +15,7 @@ public class MitStrategy implements CourseStrategy {
     @Override
     public List<Course> degreeProgram() {
         String admissionUrl = "http://gradadmissions.mit.edu";
-        String img = null;
+        String img = "http://gradadmissions.mit.edu/sites/default/files/mit-logo-sprite.png";
         String schoolName = "Massachusetts Institute of Technology";
         String city = "Cambridge";
         String state = "MA";
@@ -27,14 +27,7 @@ public class MitStrategy implements CourseStrategy {
         try {
             doc = Jsoup.connect(admissionUrl).get();
             Elements links = doc.select("[src]");
-            links.forEach(System.out::println);
-
-            // get mit log
-            for (Element link : links) {
-                if (link.attr("alt").equalsIgnoreCase("MIT")) {
-                    img = link.attr("admissionUrl" + "src");
-                }
-            }
+            //links.forEach(System.out::println);
 
             Elements links2 = doc.select("a[href]");
             links2.forEach(System.out::println);
@@ -62,7 +55,9 @@ public class MitStrategy implements CourseStrategy {
                         Course course = new Course();
                         // set common fields
                         course.setSchoolName(schoolName);
-                        course.setTuitionCost(tuitionInfo);
+                        List<String> list = new ArrayList<String>();
+                        list.add(tuitionInfo);
+                        course.setTuitionCost(list.toArray(new String[list.size()]));
                         course.setCity(city);
                         course.setState(state);
                         course.setZip(zip);
