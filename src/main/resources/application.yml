@@ -1,9 +1,10 @@
 spring:
   jpa:
     hibernate:
-      ddl-auto: create #use update in production, do not want to create the database afresh each time the program run
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
 
   datasource:
-    url: "jdbc:postgresql://localhost:5432/graduateprogramsdb"
-    username: graduateprograms
-    password: okibe1234
+    url: ${DB_URL}
+    username: ${DB_USER_NAME}
+    password: ${DB_PASSWORD}
