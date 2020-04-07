@@ -1,7 +1,8 @@
-package com.unazi.graduateprograms.model;
+package com.unazi.graduateprograms;
 
 import java.util.List;
 
+import com.unazi.graduateprograms.Course;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;

@@ -1,7 +1,7 @@
 package com.unazi.graduateprograms.services;
 
-import com.unazi.graduateprograms.model.Course;
-import com.unazi.graduateprograms.model.CourseRepository;
+import com.unazi.graduateprograms.Course;
+import com.unazi.graduateprograms.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

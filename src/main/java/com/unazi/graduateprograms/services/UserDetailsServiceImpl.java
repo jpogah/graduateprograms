@@ -1,7 +1,7 @@
 package com.unazi.graduateprograms.services;
 
-import com.unazi.graduateprograms.model.User;
-import com.unazi.graduateprograms.model.UserRepository;
+import com.unazi.graduateprograms.User;
+import com.unazi.graduateprograms.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

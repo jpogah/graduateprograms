@@ -1,7 +1,7 @@
 package com.unazi.graduateprograms.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.unazi.graduateprograms.model.UserCredential;
+import com.unazi.graduateprograms.UserCredential;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

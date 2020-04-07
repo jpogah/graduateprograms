@@ -1,10 +1,9 @@
-package com.unazi.graduateprograms.model;
+package com.unazi.graduateprograms;
 
 import lombok.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
-import java.nio.MappedByteBuffer;
 import java.util.List;
 
 @Setter

@@ -1,4 +1,4 @@
-package com.unazi.graduateprograms.model;
+package com.unazi.graduateprograms;
 
 import java.io.IOException;
 import java.util.ArrayList;

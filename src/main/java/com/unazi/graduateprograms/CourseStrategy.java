@@ -1,4 +1,6 @@
-package com.unazi.graduateprograms.model;
+package com.unazi.graduateprograms;
+
+import com.unazi.graduateprograms.Course;
 
 import java.util.List;
 

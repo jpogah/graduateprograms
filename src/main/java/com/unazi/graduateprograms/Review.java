@@ -1,4 +1,4 @@
-package com.unazi.graduateprograms.model;
+package com.unazi.graduateprograms;
 
 import lombok.Data;
 
@@ -18,6 +18,7 @@ public class Review {
     @ManyToOne
     @JoinColumn(name="user_id")
     private  User user;
+
     private String username;
 
     @ManyToOne
@@ -26,6 +27,7 @@ public class Review {
     private  Long rating;
     private  String reviewText;
     private Date createdTime;
+    private Long averageRating;
 
     public Review(){}
 

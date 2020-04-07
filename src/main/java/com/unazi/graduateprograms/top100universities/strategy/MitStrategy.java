@@ -1,7 +1,7 @@
 package com.unazi.graduateprograms.top100universities.strategy;
 
-import com.unazi.graduateprograms.model.Course;
-import com.unazi.graduateprograms.model.CourseStrategy;
+import com.unazi.graduateprograms.Course;
+import com.unazi.graduateprograms.CourseStrategy;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

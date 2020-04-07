@@ -24,6 +24,7 @@ import java.util.Arrays;
 @Configuration
 @EnableWebSecurity
 @ComponentScan(basePackageClasses = UserDetailsServiceImpl.class)
+@ComponentScan(basePackages = "com.unazi.graduateprograms")
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -37,8 +38,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().cors().and().authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/api/courses/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/courses/**","api/courses/*/reviews").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/login").permitAll()
+                .antMatchers(HttpMethod.PUT, "/api/courses/*").permitAll()
+               // .antMatchers(HttpMethod.POST, '/api/courses/*/reviews').permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilterBefore(new LoginFilter("/api/login", authenticationManager()),

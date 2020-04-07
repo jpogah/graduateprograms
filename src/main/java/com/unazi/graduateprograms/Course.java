@@ -1,4 +1,4 @@
-package com.unazi.graduateprograms.model;
+package com.unazi.graduateprograms;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -40,11 +40,21 @@ public class Course {
     private String schoolName;
     private Long rating;
     private Long totalReviews;
+    private Long averageReview;
     private String programContact;
     private String applyLink;
 
     @OneToMany(mappedBy = "course")
     private List<Review> reviews;
+
+    @PreUpdate
+    public void beforeUpdate(){
+        if (this.rating != null){
+            this.totalReviews = this.totalReviews == null ? 1 : this.totalReviews + 1;
+            Long oldAvgReview = this.averageReview == null ? 0 : this.averageReview;
+            this.averageReview = (long)(Math.ceil((oldAvgReview + this.rating)/(1.0 * this.totalReviews)));
+        }
+    }
 
 
 }
