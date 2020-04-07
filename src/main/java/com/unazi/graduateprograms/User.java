@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.List;
 
 @Setter
@@ -19,7 +20,9 @@ public class User {
 
     private  String name;
     @Column(unique = true)
+    @Email
     private  String email;
+
     private  String password;
 
     @OneToMany(mappedBy = "user")
