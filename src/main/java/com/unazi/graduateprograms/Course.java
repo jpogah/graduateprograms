@@ -43,6 +43,7 @@ public class Course {
     private Long averageReview;
     private String programContact;
     private String applyLink;
+    private String address;
 
     @OneToMany(mappedBy = "course")
     private List<Review> reviews;

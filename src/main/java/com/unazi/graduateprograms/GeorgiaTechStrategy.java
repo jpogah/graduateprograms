@@ -113,11 +113,14 @@ public class GeorgiaTechStrategy implements CourseStrategy {
                             if (programPage.text().toLowerCase().contains(("General Test: Required").toLowerCase())) {
                                 temp.setGreRequired("Yes");
                             }
+
                             temp.setToeflRequired("Yes");
                             temp.setState("GA");
                             temp.setCity("Atlanta");
                             temp.setZip("30332");
                             temp.setSchoolName("Georgia Institute Of Technology");
+                            temp.setAddress("Georgia Institute of Technology\n" +
+                                    "North Avenue, Atlanta, GA 30332");
 
                             List<String> programDetails = new ArrayList();
                             programDetails.add(programPage.select("div.field-item").first().text());

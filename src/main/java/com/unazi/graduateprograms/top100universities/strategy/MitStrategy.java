@@ -61,6 +61,7 @@ public class MitStrategy implements CourseStrategy {
                         course.setCity(city);
                         course.setState(state);
                         course.setZip(zip);
+                        course.setAddress("77 Massachusetts Ave, Cambridge, MA 02139");
                         course.setImg(img);
                         Document programPage = Jsoup.connect(admissionUrl + e.attr("href")).get();
 

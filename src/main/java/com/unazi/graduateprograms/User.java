@@ -1,5 +1,6 @@
 package com.unazi.graduateprograms;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -23,6 +24,7 @@ public class User {
     @Email
     private  String email;
 
+    @JsonIgnore
     private  String password;
 
     @OneToMany(mappedBy = "user")

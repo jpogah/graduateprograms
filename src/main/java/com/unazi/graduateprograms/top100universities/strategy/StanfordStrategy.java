@@ -82,6 +82,7 @@ public class StanfordStrategy implements CourseStrategy {
                             course.setTuitionCost(tuitionList.toArray(new String[tuitionList.size()]));
                             course.setSchoolName("Stanford University");
                             course.setCity("Stanford");
+                            course.setAddress("450 Serra Mall, Stanford, CA 94305");
                             course.setState("CA");
                             course.setZip("94305");
                             degrees.add(course);
