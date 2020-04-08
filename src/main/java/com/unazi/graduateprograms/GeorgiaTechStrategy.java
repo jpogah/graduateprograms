@@ -59,9 +59,9 @@ public class GeorgiaTechStrategy implements CourseStrategy {
                                     Elements tables = temp3.select("table");
                                     for (Element e : tables) {
 
-                                        //getTuitionCost(e,"Freshman Cost of Attendance");
-                                        //tuition = getTuitionCost(e,"Graduate Students");
-                                        //	getTuitionCost(e,"All Other Undergraduates");
+                                      //  getTuitionCost(e,"Freshman Cost of Attendance");
+                                        tuition = getTuitionCost(e,"Graduate Students");
+                                       // 	getTuitionCost(e,"All Other Undergraduates");
 
                                     }
                                     break;

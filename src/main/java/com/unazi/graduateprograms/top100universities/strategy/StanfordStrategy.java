@@ -80,6 +80,7 @@ public class StanfordStrategy implements CourseStrategy {
                             programDtlList.add(programPage.select("h1.title").text());
                             course.setProgramDetails(programDtlList.toArray(new String[programDtlList.size()]));
                             course.setTuitionCost(tuitionList.toArray(new String[tuitionList.size()]));
+                            course.setTuitionCost(tuitionList.toArray(new String[tuitionList.size()]));
                             course.setSchoolName("Stanford University");
                             course.setCity("Stanford");
                             course.setAddress("450 Serra Mall, Stanford, CA 94305");
