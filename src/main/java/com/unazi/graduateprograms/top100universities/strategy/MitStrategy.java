@@ -30,7 +30,6 @@ public class MitStrategy implements CourseStrategy {
             //links.forEach(System.out::println);
 
             Elements links2 = doc.select("a[href]");
-            links2.forEach(System.out::println);
             // Get MIT tuition info
             for (Element link : links2) {
                 if (link.text().contains("Expenses")) {

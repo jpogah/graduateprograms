@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.unazi.graduateprograms.services.CourseService;
 import com.unazi.graduateprograms.top100universities.strategy.MitStrategy;
+import com.unazi.graduateprograms.top100universities.strategy.PrincetonStrategy;
 import com.unazi.graduateprograms.top100universities.strategy.StanfordStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -36,13 +37,17 @@ public class DataBaseLoader implements CommandLineRunner {
         GeorgiaTechStrategy st = new GeorgiaTechStrategy("https://www.gatech.edu/","http://www.gradadmiss.gatech.edu/programs-a-z");
         MitStrategy mit = new MitStrategy();
         StanfordStrategy stanfordStrategy = new StanfordStrategy();
+        PrincetonStrategy princetonStrategy = new PrincetonStrategy();
         WebScraper ws = new WebScraper();
          List<Course> degrees = ws.getDegreePrograms(st);
-        this.courseService.saveCourse(degrees);
         List<Course> mitCourses = ws.getDegreePrograms(mit);
-        this.courseService.saveCourse(mitCourses);
         List<Course> stanfordCourses = ws.getDegreePrograms(stanfordStrategy);
+        List<Course> princetonCourses = ws.getDegreePrograms(princetonStrategy);
         this.courseService.saveCourse(stanfordCourses);
+        this.courseService.saveCourse(mitCourses);
+        this.courseService.saveCourse(degrees);
+        this.courseService.saveCourse(princetonCourses);
+
         reviewRepository.save(new Review(3l , "I really enjoyed the program it was great", "admin"));
         reviewRepository.save(new Review(2l , "Not my kind of program", "admin"));
 

@@ -1,5 +1,6 @@
 package com.unazi.graduateprograms;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import javax.print.Doc;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,13 +22,13 @@ import java.util.List;
 public class GraduateprogramsApplication {
 
 
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
 
         SpringApplication.run(GraduateprogramsApplication.class, args);
-
     }
 
-    @Bean
+
+   @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
