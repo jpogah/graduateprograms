@@ -2,6 +2,8 @@ package com.unazi.graduateprograms;
 
 import java.util.List;
 
+import com.unazi.graduateprograms.otheruniversities.AbileneStrategy;
+import com.unazi.graduateprograms.otheruniversities.AlaskaStrategy;
 import com.unazi.graduateprograms.services.CourseService;
 import com.unazi.graduateprograms.top100universities.strategy.MitStrategy;
 import com.unazi.graduateprograms.top100universities.strategy.PrincetonStrategy;
@@ -38,15 +40,21 @@ public class DataBaseLoader implements CommandLineRunner {
         MitStrategy mit = new MitStrategy();
         StanfordStrategy stanfordStrategy = new StanfordStrategy();
         PrincetonStrategy princetonStrategy = new PrincetonStrategy();
+        AlaskaStrategy alaskaStrategy = new AlaskaStrategy();
+        AbileneStrategy abileneStrategy = new AbileneStrategy();
         WebScraper ws = new WebScraper();
          List<Course> degrees = ws.getDegreePrograms(st);
         List<Course> mitCourses = ws.getDegreePrograms(mit);
         List<Course> stanfordCourses = ws.getDegreePrograms(stanfordStrategy);
         List<Course> princetonCourses = ws.getDegreePrograms(princetonStrategy);
+        List<Course> alaskaCourse = ws.getDegreePrograms(alaskaStrategy);
+        List<Course> abileneCourse = ws.getDegreePrograms(abileneStrategy);
         this.courseService.saveCourse(stanfordCourses);
         this.courseService.saveCourse(mitCourses);
         this.courseService.saveCourse(degrees);
         this.courseService.saveCourse(princetonCourses);
+        this.courseService.saveCourse(alaskaCourse);
+        this.courseService.saveCourse(abileneCourse);
 
         reviewRepository.save(new Review(3l , "I really enjoyed the program it was great", "admin"));
         reviewRepository.save(new Review(2l , "Not my kind of program", "admin"));
