@@ -123,7 +123,9 @@ public class GeorgiaTechStrategy implements CourseStrategy {
                                     "North Avenue, Atlanta, GA 30332");
 
                             List<String> programDetails = new ArrayList();
-                            programDetails.add(programPage.select("div.field-item").first().text());
+                            programPage.select("div.field-item").first().select("*").forEach(e-> programDetails.add(e.text()));
+
+                           // programDetails.add(programPage.select("div.field-item").first().text());
 
                             temp.setProgramDetails(programDetails.toArray(new String[programDetails.size()]));
                             this.degreePrograms.add(temp);

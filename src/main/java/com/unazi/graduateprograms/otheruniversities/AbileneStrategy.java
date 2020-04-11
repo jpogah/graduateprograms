@@ -75,43 +75,7 @@ public class AbileneStrategy implements CourseStrategy {
                                 }
 
                                 Element programDtlDiv = div;
-                                Elements htag = programDtlDiv.select("h4").size() > 2 ? programDtlDiv.select("h4")
-                                        : programDtlDiv.select("h3");
-                                if (!htag.isEmpty()) {
-                                    programDetails.add(htag.get(0).text());
-                                }
-                                if (!programDtlDiv.select("p").isEmpty()) {
-                                    programDetails.add(programDtlDiv.select("p").get(0).text());
-                                }
-                                if (programDtlDiv.select("p").size() > 1) {
-
-                                    programDetails.add(programDtlDiv.select("p").get(1).text());
-                                }
-
-                                if (htag.size() > 1) {
-                                    programDetails.add(htag.get(1).text());
-                                }
-                                if (programDtlDiv.select("p").size() > 2) {
-                                    programDetails.add(programDtlDiv.select("p").get(2).text());
-                                }
-                                programDetails.add(programDtlDiv.select("ul").text());
-                                if (programDtlDiv.select("p").size() > 3) {
-                                    programDetails.add(programDtlDiv.select("p").get(3).text());
-                                }
-                                if (programDtlDiv.select("p").size() > 4) {
-
-                                    programDetails.add(programDtlDiv.select("p").get(4).text());
-                                }
-                                if (htag.size() > 2) {
-                                    programDetails.add(htag.get(2).text());
-                                }
-                                if (programDtlDiv.select("p").size() > 5) {
-                                    programDetails.add(programDtlDiv.select("p").get(5).text());
-                                }
-                                if (programDtlDiv.select("p").size() > 6) {
-
-                                    programDetails.add(programDtlDiv.select("p").get(6).text());
-                                }
+                                programDtlDiv.select("*").forEach(e-> programDetails.add(e.text()));
 
                                 //
 

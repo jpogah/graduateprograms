@@ -56,28 +56,7 @@ public class AlaskaStrategy implements CourseStrategy {
                     String programName = programPage.select("h1.page-title").first().text();
                     System.out.println(programName);
                     Elements programDetailDiv = programPage.select("div#textcontainer");
-                    if (!programDetailDiv.select("p").isEmpty()) {
-
-                        programDetails.add(programDetailDiv.select("p").first().text());
-                    }
-                    if (null != programDetailDiv.select("h2") && null !=  programDetailDiv.select("h2").first()) {
-                        programDetails.add(programDetailDiv.select("h2").first().text());
-                    }
-                    if (programDetailDiv.select("p").size() > 1) {
-                        programDetails.add(programDetailDiv.select("p").get(1).text());
-                    }
-                    if (!programDetailDiv.select("ul").isEmpty()) {
-                        programDetails.add(programDetailDiv.select("ul").first().text());
-                    }
-                    if (programDetailDiv.select("p").size() > 2) {
-                        programDetails.add(programDetailDiv.select("p").get(2).text());
-                    }
-                    if (programDetailDiv.select("p").size() > 3) {
-                        programDetails.add(programDetailDiv.select("p").get(3).text());
-                    }
-                    if (programDetailDiv.select("p").size() > 4) {
-                        programDetails.add(programDetailDiv.select("p").get(4).text());
-                    }
+                    programDetailDiv.select("*").forEach(e-> programDetails.add(e.text()));
                     if (programDetailDiv.text().toLowerCase().contains("Graduate Record Examination (GRE) results".toLowerCase())){
                         course.setGreRequired("Yes");
                     }

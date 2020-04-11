@@ -24,7 +24,7 @@ public class GraduateprogramsApplication {
 
     public static void main(String[] args) {
 
-        SpringApplication.run(GraduateprogramsApplication.class, args);
+       SpringApplication.run(GraduateprogramsApplication.class, args);
 
     }
 
