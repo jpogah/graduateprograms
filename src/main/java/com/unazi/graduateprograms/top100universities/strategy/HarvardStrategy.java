@@ -98,8 +98,7 @@ public class HarvardStrategy implements CourseStrategy {
                         Elements divNodes = applyPage.select("div.field-item");
                         for (Element div : divNodes){
                             if (div.attr("property").equalsIgnoreCase("content:encoded")){
-                                div.select("*").forEach(e-> proDetials.add(e.text()));
-
+                                proDetials.add(div.text());
                             }
                         }
 
